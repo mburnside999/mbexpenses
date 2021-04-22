@@ -1,0 +1,17 @@
+{
+   "totalSize" : 1,
+   "done" : true,
+   "records" : [
+      {
+         "SystemModstamp" : "2020-07-20T23:25:47.000+0000",
+         "Name" : "mbexpenses",
+         "attributes" : {
+            "type" : "MetadataPackage",
+            "url" : "/services/data/v51.0/sobjects/MetadataPackage/0331I000000ZcbMQAS"
+         },
+         "PackageCategory" : "Package2",
+         "Id" : "0331I000000ZcbMQAS",
+         "NamespacePrefix" : null
+      }
+   ]
+}

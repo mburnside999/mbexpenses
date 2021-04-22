@@ -1,0 +1,1 @@
+curl https://ctademo5.my.salesforce.com/services/data/v51.0/query?q="SELECT+BuildNumber+,+Id+,+IsDeprecated+,+MetadataPackageId+,+Name+,+MajorVersion+,+MinorVersion+,+PatchVersion+,+ReleaseState+,+SystemModstamp+FROM+MetadataPackageVersion+where+metadatapackageid=+'$X'+order+by+systemmodstamp+desc+limit+1" -H "Authorization: Bearer $TOKEN"

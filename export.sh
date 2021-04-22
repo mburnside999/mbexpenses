@@ -1,0 +1,1 @@
+sfdx force:data:tree:export -q "SELECT Id, Expense_Date__c,Expense_Claim_Type__c, (SELECT Amount__c,Expense_Item_Date__c, Expense_Item_type__c,payment_method__c,personal_expense__c FROM MBExpenses__r) FROM MBExpense__c"

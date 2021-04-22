@@ -1,0 +1,22 @@
+{
+   "records" : [
+      {
+         "Name" : "aries",
+         "PatchVersion" : 2,
+         "MajorVersion" : 1,
+         "IsDeprecated" : false,
+         "MinorVersion" : 14,
+         "MetadataPackageId" : "0331I000000ZcbMQAS",
+         "attributes" : {
+            "url" : "/services/data/v51.0/sobjects/MetadataPackageVersion/04t1I000000PQgmQAG",
+            "type" : "MetadataPackageVersion"
+         },
+         "Id" : "04t1I000000PQgmQAG",
+         "BuildNumber" : 1,
+         "ReleaseState" : "Released",
+         "SystemModstamp" : "2021-04-14T12:57:56.000+0000"
+      }
+   ],
+   "totalSize" : 1,
+   "done" : true
+}

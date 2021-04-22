@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>MBExpense__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>MBExpenses Path</masterLabel>
+    <pathAssistantSteps>
+        <info>&lt;p&gt;Use the comments field to describe the purpose of the expense&lt;/p&gt;</info>
+        <picklistValueName>New</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>__MASTER__</recordTypeName>
+</PathAssistant>

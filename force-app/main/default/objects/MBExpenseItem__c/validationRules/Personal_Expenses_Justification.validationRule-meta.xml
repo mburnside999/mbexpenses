@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Personal_Expenses_Justification</fullName>
+    <active>true</active>
+    <errorConditionFormula>Personal_Expense__c == true &amp;&amp;  Comments__c==&quot;&quot;</errorConditionFormula>
+    <errorDisplayField>Comments__c</errorDisplayField>
+    <errorMessage>Personal expenses must be accompanied by an explanation</errorMessage>
+</ValidationRule>

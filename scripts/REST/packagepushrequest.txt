@@ -1,0 +1,53 @@
+
+Pushing package upgrades automatically
+
+IN DEVHUB ORG
+
+1. get the package version id you want to push. Returns a reference like 04t... you need this later.
+SELECT BuildNumber,Id,IsDeprecated,MetadataPackageId,Name,MajorVersion,MinorVersion,PatchVersion,ReleaseState,SystemModstamp FROM MetadataPackageVersion order by systemmodstamp
+SELECT+BuildNumber+,+Id+,+IsDeprecated+,+MetadataPackageId+,+Name+,+MajorVersion+,+MinorVersion+,+PatchVersion+,+ReleaseState+,+SystemModstamp+FROM+MetadataPackageVersion+order+by+systemmodstamp
+
+2. get the Org Ids that are subscribers to this package, called the "orgkeys" (my scratch org is 00D17000000Qlgl)... you need this later
+select+id,installedstatus,instancename,metadatapackageid,orgkey,orgname,orgstatus,orgtype+from+packagesubscriber
+select+id+installedstatus+instancename+metadatapackageid+orgkey+orgname+orgstatus+orgtype+from+packagesubscriber
+
+3. Create and POST a package PackagePushRequest. It returns a 0DV... reference, you need this later
+(can actually set a scheduled time if required, we wont)
+
+POST
+/services/data/v51.0/sobjects/packagepushrequest/
+
+{
+   "PackageVersionId" : "04t..."
+}
+
+
+4. (Optional) Check the packagepushrequest
+
+SELECT DurationSeconds,EndTime,Id,PackageVersionId,ScheduledStartTime,StartTime,Status,SystemModstamp FROM PackagePushRequest
+
+4. create a packagepushjob with ODV... from above, together with the subscriber org id from above
+
+POST
+/services/data/v38.0/sobjects/packagepushjob/
+{
+   "PackagePushRequestId" : "0DV...",
+   "SubscriberOrganizationKey" : "00D17000000Qlgl"
+}
+
+
+
+5. Finally, start the packagepushrequest by changing the status to Pending
+
+PATCH 
+/services/data/v38.0/sobjects/packagepushrequest/0DV...
+{
+   "Status" : "Pending"
+}
+
+6.(Optional) Check the packagepushrequest
+
+SELECT DurationSeconds,EndTime,Id,PackageVersionId,ScheduledStartTime,StartTime,Status,SystemModstamp FROM PackagePushRequest
+
+
+

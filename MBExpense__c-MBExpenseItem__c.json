@@ -1,0 +1,27 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "MBExpense__c",
+                "referenceId": "MBExpense__cRef1"
+            },
+            "Expense_Date__c": "2021-04-13",
+            "Expense_Claim_Type__c": "General Business",
+            "MBExpenseItems__r": {
+                "records": [
+                    {
+                        "attributes": {
+                            "type": "MBExpenseItem__c",
+                            "referenceId": "MBExpenseItem__cRef1"
+                        },
+                        "Amount__c": 100,
+                        "Expense_Item_Date__c": "2021-04-12",
+                        "Expense_Item_Type__c": "Meals",
+                        "Payment_Method__c": "Credit Card",
+                        "Personal_Expense__c": false
+                    }
+                ]
+            }
+        }
+    ]
+}

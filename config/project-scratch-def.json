@@ -1,0 +1,17 @@
+{
+  "orgName": "mikes-mbexp-org",
+  "edition": "Developer",
+  "features": ["enableSetPasswordInApi"],
+  "hasSampleData": true,
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "pathAssistantSettings": {
+      "pathAssistantEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    }
+  }
+}
