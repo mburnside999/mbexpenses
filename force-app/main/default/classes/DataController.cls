@@ -13,10 +13,10 @@ public with sharing class DataController {
         
         List<MBExpense__c> mbexpenses = new List<MBExpense__c>();
         MBExpense__c mbexpense = new MBExpense__c();
-        mbexpense.Expense_Date__c=Date.today();
-        mbexpense.Expense_Claim_Type__c='General Business';
+    mbexpense.Expense_Date__c=Date.today();
+            mbexpense.Expense_Claim_Type__c='General Business';
         mbexpense.Status__c='New';
-        mbexpense.Comments__c='my expense comments';
+    mbexpense.Comments__c='my expense comments';
         insert mbexpense;
 
         MBExpenseItem__c mbexpenseitem=new MBExpenseItem__c();
@@ -50,7 +50,7 @@ public with sharing class DataController {
 
 insert mbexpenseitem;
 
-
+/*mike added this*/
 
         
         
