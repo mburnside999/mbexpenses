@@ -18,6 +18,7 @@ jobs:
         node_modules/sfdx-cli/bin/run --version
         node_modules/sfdx-cli/bin/run plugins --core
         npm install -g shane-sfdx-plugins
+        npm install prettier prettier-plugin-apex
       
     - name: Authenticate DevHub
       run: |
