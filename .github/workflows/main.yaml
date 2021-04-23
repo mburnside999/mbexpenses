@@ -10,7 +10,7 @@ jobs:
       if: github.event.action == 'opened' || github.event.action == 'synchronize'
     - uses: actions/setup-node@v1
       with:
-        node-version: '10.x'
+        node-version: '14'
 
     - name: Install Salesforce CLI
       run: |
