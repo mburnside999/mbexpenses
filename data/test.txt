@@ -1,1 +1,1 @@
-hello
+echo hello
