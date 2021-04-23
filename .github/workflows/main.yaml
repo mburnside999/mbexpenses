@@ -17,6 +17,7 @@ jobs:
         npm install sfdx-cli
         node_modules/sfdx-cli/bin/run --version
         node_modules/sfdx-cli/bin/run plugins --core
+        npm install -g shane-sfdx-plugins
       
     - name: Authenticate DevHub
       run: |
