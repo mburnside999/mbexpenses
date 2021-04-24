@@ -1,32 +1,32 @@
 {
-    "packageDirectories": [
-        {
-            "path": "force-app",
-            "default": true,
-            "package": "mikesexpenses",
-            "versionName": "aries",
-            "versionNumber": "1.14.2.NEXT"
-        }
-    ],
-    "namespace": "",
-    "sourceApiVersion": "51.0",
-    "packageAliases": {
-        "mikesexpenses": "0Ho1I000000GmhjSAC",
-        "mikesexpenses@1.8.0-1": "04t1I000000PQfZQAW",
-        "mikesexpenses@1.8.0-2": "04t1I000000PQfeQAG",
-        "mikesexpenses@1.8.0-3": "04t1I000000PQfjQAG",
-        "mikesexpenses@1.8.0-4": "04t1I000000PQfoQAG",
-        "mikesexpenses@1.9.0-1": "04t1I000000PQftQAG",
-        "mikesexpenses@1.10.0-1": "04t1I000000PQfyQAG",
-        "mikesexpenses@1.11.0-1": "04t1I000000PQg3QAG",
-        "mikesexpenses@1.11.0-2": "04t1I000000PQg8QAG",
-        "mikesexpenses@1.11.1-1": "04t1I000000PQgDQAW",
-        "mikesexpenses@1.11.1-2": "04t1I000000PQgIQAW",
-        "mikesexpenses@1.12.0-1": "04t1I000000PQgNQAW",
-        "mikesexpenses@1.13.0-1": "04t1I000000PQgSQAW",
-        "mikesexpenses@1.13.0-2": "04t1I000000PQgXQAW",
-        "mikesexpenses@1.14.0-1": "04t1I000000PQgcQAG",
-        "mikesexpenses@1.14.1-1": "04t1I000000PQghQAG",
-        "mikesexpenses@1.14.2-1": "04t1I000000PQgmQAG"
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true,
+      "package": "mikesexpenses",
+      "versionName": "aries",
+      "versionNumber": "1.14.2.NEXT"
     }
+  ],
+  "namespace": "",
+  "sourceApiVersion": "51.0",
+  "packageAliases": {
+    "mikesexpenses": "0Ho1I000000GmhjSAC",
+    "mikesexpenses@1.8.0-1": "04t1I000000PQfZQAW",
+    "mikesexpenses@1.8.0-2": "04t1I000000PQfeQAG",
+    "mikesexpenses@1.8.0-3": "04t1I000000PQfjQAG",
+    "mikesexpenses@1.8.0-4": "04t1I000000PQfoQAG",
+    "mikesexpenses@1.9.0-1": "04t1I000000PQftQAG",
+    "mikesexpenses@1.10.0-1": "04t1I000000PQfyQAG",
+    "mikesexpenses@1.11.0-1": "04t1I000000PQg3QAG",
+    "mikesexpenses@1.11.0-2": "04t1I000000PQg8QAG",
+    "mikesexpenses@1.11.1-1": "04t1I000000PQgDQAW",
+    "mikesexpenses@1.11.1-2": "04t1I000000PQgIQAW",
+    "mikesexpenses@1.12.0-1": "04t1I000000PQgNQAW",
+    "mikesexpenses@1.13.0-1": "04t1I000000PQgSQAW",
+    "mikesexpenses@1.13.0-2": "04t1I000000PQgXQAW",
+    "mikesexpenses@1.14.0-1": "04t1I000000PQgcQAG",
+    "mikesexpenses@1.14.1-1": "04t1I000000PQghQAG",
+    "mikesexpenses@1.14.2-1": "04t1I000000PQgmQAG"
+  }
 }

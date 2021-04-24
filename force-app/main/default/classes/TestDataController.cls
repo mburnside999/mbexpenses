@@ -9,7 +9,6 @@ private class TestDataController {
         Integer expensesNumber = [SELECT COUNT() FROM MBExpense__c];
         Integer expenseItemsNumber = [SELECT COUNT() FROM MBEXpenseItem__c];
 
-
         System.assert(expensesNumber > 0, 'Expected expenses were created.');
         System.assert(expenseItemsNumber > 0, 'Expected items were created.');
     }
