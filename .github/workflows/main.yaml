@@ -43,13 +43,13 @@ jobs:
               with:
                   flags: LWC
 
-scratch-org-test:
+  scratch-org-test:
         runs-on: ubuntu-latest
         needs: format-lint-lwc-tests
         steps:
         
-   - name: 'Install Salesforce CLI'
-              run: |
+         - name: 'Install Salesforce CLI'
+           run: |
                   wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
                   mkdir ~/sfdx
                   tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
@@ -57,35 +57,35 @@ scratch-org-test:
                   ~/sfdx/bin/sfdx version
                   
                   # Checkout the source code
-            - name: 'Checkout source code'
-              uses: actions/checkout@v2
+                  - name: 'Checkout source code'
+                  uses: actions/checkout@v2
       
-    - name: Authenticate DevHub
-      run: |
-        echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
-        node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
-      env:
-        SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}
+         - name: Authenticate DevHub
+           run: |
+                echo "${SALESFORCE_JWT_SECRET_KEY}" > server.key
+                node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid ${{ secrets.SALESFORCE_CONSUMER_KEY }} --jwtkeyfile server.key --username ${{ secrets.SALESFORCE_DEVHUB_USERNAME}} --setdefaultdevhubusername -a devhub
+           env:
+                SALESFORCE_JWT_SECRET_KEY: ${{ secrets.SALESFORCE_JWT_SECRET_KEY }}
 
-    - name: Define CI org
-      run: node_modules/sfdx-cli/bin/run force:org:create -v devhub -s -f config/project-scratch-def.json -a ciorg -d 1
+         - name: Define CI org
+           run: node_modules/sfdx-cli/bin/run force:org:create -v devhub -s -f config/project-scratch-def.json -a ciorg -d 1
 
-    - name: Deploy source
-      run: node_modules/sfdx-cli/bin/run force:source:push -u ciorg
+         - name: Deploy source
+           run: node_modules/sfdx-cli/bin/run force:source:push -u ciorg
 
-    - name: Assign PS
-      run: node_modules/sfdx-cli/bin/run force:user:permset:assign -n MBEXpensesPS -u ciorg
+         - name: Assign PS
+           run: node_modules/sfdx-cli/bin/run force:user:permset:assign -n MBEXpensesPS -u ciorg
 
-    - name: Run Apex test
-      run: node_modules/sfdx-cli/bin/run force:apex:test:run -c -r human
+         - name: Run Apex test
+           run: node_modules/sfdx-cli/bin/run force:apex:test:run -c -r human
 
-    - name: Import data
-      run: node_modules/sfdx-cli/bin/run force:apex:execute -u ciorg  -f ./scripts/apex/import.apex
+         - name: Import data
+           run: node_modules/sfdx-cli/bin/run force:apex:execute -u ciorg  -f ./scripts/apex/import.apex
 
-    - name: Comment login url
-      env: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_REQUEST_COMMENT_URL:  ${{ github.event.pull_request._links.comments.href }}
-      run: |
-        CIORG_LOGIN_URL=$(node_modules/sfdx-cli/bin/run force:org:open -u ciorg -r) 
-        curl -X POST -H 'Content-Type:application/json' -d "{\"body\":\"${CIORG_LOGIN_URL}\"}" ${PULL_REQUEST_COMMENT_URL}?access_token=${GITHUB_TOKEN}
+         - name: Comment login url
+           env: 
+                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                 PULL_REQUEST_COMMENT_URL:  ${{ github.event.pull_request._links.comments.href }}
+           run: |
+                CIORG_LOGIN_URL=$(node_modules/sfdx-cli/bin/run force:org:open -u ciorg -r) 
+                curl -X POST -H 'Content-Type:application/json' -d "{\"body\":\"${CIORG_LOGIN_URL}\"}" ${PULL_REQUEST_COMMENT_URL}?access_token=${GITHUB_TOKEN}
