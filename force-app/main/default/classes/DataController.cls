@@ -3,7 +3,7 @@ public with sharing class DataController {
     public static void importSampleData() {
         delete [SELECT Id FROM MBExpense__c];
         delete [SELECT Id FROM MBEXpenseItem__c];
-
+/* DML */
         insertMBExpenses();
     }
 
