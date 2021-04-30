@@ -14,6 +14,8 @@ public with sharing class DataController {
         mbexpense.Expense_Claim_Type__c = 'General Business';
         mbexpense.Status__c = 'New';
         mbexpense.Comments__c = 'my expense comments';
+
+        /* DML */
         insert mbexpense;
 
         MBExpenseItem__c mbexpenseitem = new MBExpenseItem__c();
