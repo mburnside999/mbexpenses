@@ -1,1 +1,1 @@
-echo hello fred
+echo hello fredkk
