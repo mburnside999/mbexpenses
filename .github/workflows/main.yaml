@@ -3,29 +3,61 @@ name: Scratch org for review
 on: pull_request
 
 jobs:
-    build:
+    format-lint-lwc-tests:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@master
-              if: github.event.action == 'opened' || github.event.action == 'synchronize'
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: '14'
+            # Checkout the source code
+            - name: 'Checkout source code'
+              uses: actions/checkout@v2
 
-            - name: Prettier
-              run: |
-                  npm install prettier prettier-plugin-apex
+            # Cache node_modules to speed up the process
+            - name: 'Restore node_modules cache'
+              id: cache-npm
+              uses: actions/cache@v1
+              with:
+                  path: node_modules
+                  key: npm-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      npm-${{ env.cache-name }}-
+                      npm-
+            # Install npm dependencies for Prettier and Jest
+            - name: 'Install npm dependencies'
+              if: steps.cache-npm.outputs.cache-hit != 'true'
+              run: npm ci
 
             # Prettier formatting
             - name: 'Code formatting verification with Prettier'
               run: npm run prettier:verify
 
-            - name: Install Salesforce CLI
+            # ESlint
+            - name: 'Lint Project'
+              run: npm run lint
+
+            # LWC unit tests
+            - name: 'Unit test Lightning Web Components'
+              run: npm run test:unit:coverage
+
+            # Upload code coverage data
+            - name: 'Upload code coverage for LWC to Codecov.io'
+              uses: codecov/codecov-action@v1
+              with:
+                  flags: LWC
+
+    scratch-org-test:
+        runs-on: ubuntu-latest
+        needs: format-lint-lwc-tests
+        steps:
+            - name: 'Install Salesforce CLI'
               run: |
-                  npm install sfdx-cli
-                  node_modules/sfdx-cli/bin/run --version
-                  node_modules/sfdx-cli/bin/run plugins --core
-                  npm install -g shane-sfdx-plugins
+                  wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz
+                  mkdir ~/sfdx
+                  tar xJf sfdx-linux-x64.tar.xz -C ~/sfdx --strip-components 1
+                  echo "$HOME/sfdx/bin" >> $GITHUB_PATH
+                  ~/sfdx/bin/sfdx version
+
+                  # Checkout the source code
+                  - name: 'Checkout source code'
+                  uses: actions/checkout@v2
 
             - name: Authenticate DevHub
               run: |
