@@ -1,0 +1,25 @@
+minimum_cumulusci_version: '3.38.0'
+project:
+    name: mbexpensespackage
+    package:
+        name: mbexpensespackage
+        api_version: '50.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/mbexpensespackage/tests
+            options:
+                outputdir: robot/mbexpensespackage/results
+
+    robot_testdoc:
+        options:
+            path: robot/mbexpensespackage/tests
+            output: robot/mbexpensespackage/doc/mbexpensespackage_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
